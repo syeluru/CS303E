@@ -12,15 +12,18 @@
 
 #  Date Created: 10/19/15
 
-#  Date Last Modified: 10/19/15
+#  Date Last Modified: 10/20/15
 
 # Method for primary error checking
 def is_valid_candidate(a):
-    if len(a) != 10 or not a[0:9].isdigit() or a[9] == 'x' or a[9] == "X":
+    if len(a) != 10:
         return False
-
-
-
+    elif not a[0:9].isdigit():
+        return False
+    elif a[0:9].count('x') > 0 or a[0:9].count('X') > 0:
+        return False
+    else:
+        return True
 # Method to convert an ISBN string into a list of numbers
 def convert_to_list(a):
     # Empty array to start
@@ -59,11 +62,13 @@ def main():
     out_file = open("./isbnOut.txt", 'w')
     for line in in_file:
         # Make sure we have just the string without spaces
-        line_to_analyze = line.strip()
-        line_to_analyze.replace("-","")
-        if is_valid_candidate(line_to_analyze):
-
-            b = convert_to_list(line_to_analyze)
+        # Gets rid of the \n character and any other spaces
+        line_to_analyze = line.strip('\n')
+        line_to_analyze = line_to_analyze.strip()
+        # To get rid of hyphens
+        line_to_check = line_to_analyze.replace ("-", "")
+        if is_valid_candidate(line_to_check):
+            b = convert_to_list(line_to_check)
             # The algorithm
             s1 = partial_sum(b)
             s2 = partial_sum(s1)
