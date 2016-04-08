@@ -1,0 +1,3 @@
+basically we want to go to all the start points that are at least 4 away from the end of the column - so like in a 5 by 5, we would go to (0,0), (1,0), (0,1) and (1,1)
+Question is: how do we only iterate over those? 
+what if we were given a start position and had a method to compute the product of those 4 numbers, starting with that start index.  

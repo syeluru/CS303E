@@ -71,7 +71,9 @@ def main():
             b = convert_to_list(line_to_check)
             # The algorithm
             s1 = partial_sum(b)
+            print (s1)
             s2 = partial_sum(s1)
+            print (s2)
             # Each line is in this format:
             line_to_output = "%s  %s \n" % (line_to_analyze, is_valid_ISBN(s2))
             # Write each line out in the new out_file
